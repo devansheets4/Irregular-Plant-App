@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+
+
+    <mat-form-field>
+      <mat-label>REMOTE</mat-label>
+      <mat-select formControlName="remote">
+        <mat-option>-- None --</mat-option>
+        <mat-optgroup *ngFor="let group of remoteGroups" [label]="group.name"
+                      [disabled]="group.disabled">
+          <mat-option *ngFor="let remote of group.remote" [value]="remote.value">
+            {{remote.viewValue}}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <textarea matInput rows="4" formControlName="route" placeholder="ROUTE NUMBER"></textarea>
+      <mat-error *ngIf="form.get('route').invalid">Please enter the route number</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput rows="4" formControlName="content" placeholder="DESCRIPTION"></textarea>
+      <mat-error *ngIf="form.get('content').invalid">Please enter the post content</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" formControlName="title" placeholder="EMPLOYEE NAME">
+      <mat-error *ngIf="form.get('title').invalid">Please enter the post title</mat-error>
+    </mat-form-field>
+
+
+
+
+
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Upload Image</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+      <img [src]="imagePreview" [alt]="form.value.title">
+    </div>
+
+    <br>
+    <button mat-raised-button color="primary" type="submit">Add to Report</button>
+  </form>
+</mat-card>
+
+
+
