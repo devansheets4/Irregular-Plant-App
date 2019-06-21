@@ -7,7 +7,6 @@ const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 
 const app = express();
-mongoose.set('useCreateIndex', true);
 
 mongoose
   .connect(
