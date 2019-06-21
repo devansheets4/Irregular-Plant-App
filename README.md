@@ -1,3 +1,5 @@
+  -- SOME FILES HAVE NOT BEEN ADDED TO REPOSITORY DUE TO THEM CONTAINING PASSWORDS TO DATABASE AND OTHER IMPORTANT KEYS --
+
 # MeanStackGuide
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
